@@ -1,4 +1,6 @@
 package com.example.vktestproducts.presentation.products
 
-class ProductsViewModel {
+import androidx.lifecycle.ViewModel
+
+class ProductsViewModel: ViewModel() {
 }
