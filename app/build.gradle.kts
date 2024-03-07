@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -71,6 +71,9 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
