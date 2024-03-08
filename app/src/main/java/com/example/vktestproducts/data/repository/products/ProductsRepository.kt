@@ -1,7 +1,9 @@
 package com.example.vktestproducts.data.repository.products
 
-import com.example.vktestproducts.data.remote.ProductsPagingSource
+import androidx.paging.PagingData
+import com.example.vktestproducts.data.models.Product
+import kotlinx.coroutines.flow.Flow
 
 interface ProductsRepository {
-    fun productsPagingSource(): ProductsPagingSource
+    fun getProducts(): Flow<PagingData<Product>>
 }
