@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VkTestProducts</string>
+    <string name="error">Нет соединения</string>
+    <string name="refresh">Обновить</string>
 </resources>
