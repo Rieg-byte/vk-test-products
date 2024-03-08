@@ -59,7 +59,7 @@ fun ProductsScreen(productsViewModel: ProductsViewModel = viewModel()) {
 }
 
 @Composable
-fun ProductsList(
+private fun ProductsList(
     modifier: Modifier = Modifier,
     lazyPagingProducts: LazyPagingItems<Product>
 ) {
@@ -89,7 +89,7 @@ fun ProductsList(
 }
 
 @Composable
-fun ProductCard(
+private fun ProductCard(
     modifier: Modifier = Modifier,
     product: Product
 ) {
