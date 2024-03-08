@@ -18,5 +18,4 @@ class ProductsViewModel @Inject constructor(private val productsRepository: Prod
     private val _productsState: MutableStateFlow<ProductsState> = MutableStateFlow(ProductsState())
     val productsState: StateFlow<ProductsState> = _productsState.asStateFlow()
     val products: Flow<PagingData<Product>> = productsRepository.getProducts().cachedIn(viewModelScope)
-
 }
