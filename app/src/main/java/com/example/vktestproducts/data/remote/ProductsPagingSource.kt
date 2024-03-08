@@ -7,18 +7,20 @@ import com.example.vktestproducts.data.models.Product
 
 class ProductsPagingSource (private val productsRemoteDataSource: ProductsRemoteDataSource): PagingSource<Int, Product>() {
     override fun getRefreshKey(state: PagingState<Int, Product>): Int? {
-        return state.anchorPosition
+        val anchorPosition = state.anchorPosition ?: return null
+        val skip = state.closestPageToPosition(anchorPosition) ?: return null
+        return skip.prevKey ?: skip.nextKey
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Product> {
         return try {
             val skip = params.key ?: 0
             val limit = params.loadSize
-            Log.d("PagingCheck", "skip = $skip, limit = $limit")
             val response = productsRemoteDataSource.getProducts(skip, limit)
             val products = response.products
-            val nextKey = if (products.size < limit) null else skip + limit
-            val prevKey = if (skip == 0) null else skip - limit
+            val nextKey = if (products.size < limit) null else skip + products.size
+            val prevKey = if (skip == 0) null else skip - products.size
+            Log.d("PagingCheck", "skip = $skip, limit = $limit, size = ${products.size}, prevKey = $prevKey, nextKey = $nextKey")
             LoadResult.Page(
                 data = products,
                 prevKey = prevKey,
