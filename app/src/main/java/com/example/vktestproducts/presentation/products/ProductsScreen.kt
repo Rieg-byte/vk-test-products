@@ -1,6 +1,7 @@
 package com.example.vktestproducts.presentation.products
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -27,7 +28,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
@@ -42,7 +42,10 @@ import com.example.vktestproducts.presentation.components.LoadingPlaceholder
 import kotlinx.coroutines.flow.flowOf
 
 @Composable
-fun ProductsScreen(productsViewModel: ProductsViewModel = viewModel()) {
+fun ProductsScreen(
+    productsViewModel: ProductsViewModel,
+    navigateToDetailsScreen: (Int) -> Unit
+) {
     val lazyPagingProducts = productsViewModel.products.collectAsLazyPagingItems()
     Column(
         modifier = Modifier.fillMaxSize()
@@ -53,7 +56,10 @@ fun ProductsScreen(productsViewModel: ProductsViewModel = viewModel()) {
                 modifier = Modifier.fillMaxSize(),
                 onRefresh = {lazyPagingProducts.refresh()}
             )
-            is LoadState.NotLoading -> ProductsList(lazyPagingProducts = lazyPagingProducts)
+            is LoadState.NotLoading -> ProductsList(
+                lazyPagingProducts = lazyPagingProducts,
+                navigateToDetailsScreen = navigateToDetailsScreen
+            )
         }
     }
 }
@@ -61,7 +67,8 @@ fun ProductsScreen(productsViewModel: ProductsViewModel = viewModel()) {
 @Composable
 private fun ProductsList(
     modifier: Modifier = Modifier,
-    lazyPagingProducts: LazyPagingItems<Product>
+    lazyPagingProducts: LazyPagingItems<Product>,
+    navigateToDetailsScreen: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = modifier.fillMaxSize(),
@@ -75,7 +82,7 @@ private fun ProductsList(
         ) { index ->
             val item = lazyPagingProducts[index]
             item?.let {
-                ProductCard(product = item)
+                ProductCard(product = item, navigateToDetailsScreen = navigateToDetailsScreen)
             }
         }
         item {
@@ -91,12 +98,16 @@ private fun ProductsList(
 @Composable
 private fun ProductCard(
     modifier: Modifier = Modifier,
-    product: Product
+    product: Product,
+    navigateToDetailsScreen: (Int) -> Unit
 ) {
     Card(
         modifier = modifier
             .height(130.dp)
             .fillMaxWidth()
+            .clickable {
+                navigateToDetailsScreen(product.id)
+            }
     ) {
         Row(
             modifier = Modifier
@@ -177,7 +188,10 @@ private fun ProductsListPreview() {
         )
     )
     val lazyPagingProducts = flowOf(PagingData.from(products)).collectAsLazyPagingItems()
-    ProductsList(lazyPagingProducts = lazyPagingProducts)
+    ProductsList(
+        lazyPagingProducts = lazyPagingProducts,
+        navigateToDetailsScreen = {}
+    )
 }
 
 @Preview(device = "id:pixel_5")
@@ -196,6 +210,7 @@ private fun ProductCardPreview() {
             category = "smartphones",
             thumbnail = "",
             images = listOf("")
-        )
+        ),
+        navigateToDetailsScreen = {}
     )
 }
