@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.vktestproducts.presentation.navigation.VkTestProductsNavHost
 import com.example.vktestproducts.presentation.products.ProductsScreen
 import com.example.vktestproducts.ui.theme.VkTestProductsTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ProductsScreen()
+                    VkTestProductsNavHost()
                 }
             }
         }
