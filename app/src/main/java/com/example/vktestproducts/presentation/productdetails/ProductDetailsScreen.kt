@@ -48,9 +48,9 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.vktestproducts.R
 import com.example.vktestproducts.data.models.Product
-import com.example.vktestproducts.presentation.components.ErrorPlaceholder
-import com.example.vktestproducts.presentation.components.LoadingPlaceholder
-import com.example.vktestproducts.presentation.icons.VkTestProductsIcons
+import com.example.vktestproducts.presentation.common.components.ErrorPlaceholder
+import com.example.vktestproducts.presentation.common.components.LoadingPlaceholder
+import com.example.vktestproducts.presentation.common.icons.VkTestProductsIcons
 import com.example.vktestproducts.ui.theme.colorRating
 import com.example.vktestproducts.ui.theme.discountBackground
 import com.example.vktestproducts.ui.theme.onDiscountBackground

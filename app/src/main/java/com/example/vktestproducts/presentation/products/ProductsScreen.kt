@@ -37,8 +37,8 @@ import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.vktestproducts.data.models.Product
-import com.example.vktestproducts.presentation.components.ErrorPlaceholder
-import com.example.vktestproducts.presentation.components.LoadingPlaceholder
+import com.example.vktestproducts.presentation.common.components.ErrorPlaceholder
+import com.example.vktestproducts.presentation.common.components.LoadingPlaceholder
 import kotlinx.coroutines.flow.flowOf
 
 @Composable

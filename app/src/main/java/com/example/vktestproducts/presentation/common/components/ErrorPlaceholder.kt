@@ -1,4 +1,4 @@
-package com.example.vktestproducts.presentation.components
+package com.example.vktestproducts.presentation.common.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
