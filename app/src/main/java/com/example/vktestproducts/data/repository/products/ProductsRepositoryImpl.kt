@@ -18,4 +18,6 @@ class ProductsRepositoryImpl @Inject constructor(private val productsRemoteDataS
         ),
         pagingSourceFactory = { ProductsPagingSource(productsRemoteDataSource) }
     ).flow
+
+    override suspend fun getSingleProduct(id: Int): Product = productsRemoteDataSource.getSingleProduct(id)
 }
