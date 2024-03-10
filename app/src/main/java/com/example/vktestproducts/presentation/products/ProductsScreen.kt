@@ -11,6 +11,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -29,7 +31,8 @@ fun ProductsScreen(
     navigateToSearchScreen: () -> Unit,
     navigateToDetailsScreen: (Int) -> Unit
 ) {
-    val lazyPagingProducts = productsViewModel.products.collectAsLazyPagingItems()
+    val productsState by productsViewModel.productsState.collectAsState()
+    val lazyPagingProducts = productsState.products.collectAsLazyPagingItems()
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
