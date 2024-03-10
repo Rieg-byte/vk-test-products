@@ -23,7 +23,7 @@ fun ErrorPlaceholder(
     onRefresh: () -> Unit = {}
 ) {
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
