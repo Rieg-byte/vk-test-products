@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VkTestProducts</string>
+    <string name="app_name">VK Test Products</string>
     <string name="error">Нет соединения</string>
     <string name="refresh">Обновить</string>
     <string name="back_button">Кнопка назад</string>
