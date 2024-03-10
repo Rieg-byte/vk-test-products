@@ -5,5 +5,6 @@ import com.example.vktestproducts.data.models.ResponseProducts
 
 interface ProductsRemoteDataSource {
     suspend fun getProducts(skip: Int, limit: Int): ResponseProducts
+    suspend fun getProductsByQuery(skip: Int, limit: Int, query: String): ResponseProducts
     suspend fun getSingleProduct(id: Int): Product
 }
