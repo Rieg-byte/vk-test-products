@@ -19,5 +19,14 @@ class ProductsRepositoryImpl @Inject constructor(private val productsRemoteDataS
         pagingSourceFactory = { ProductsPagingSource(productsRemoteDataSource) }
     ).flow
 
+    override fun getProductsByQuery(query: String): Flow<PagingData<Product>> = Pager(
+        config = PagingConfig(
+            pageSize = 20,
+            initialLoadSize = 20,
+            prefetchDistance = 1
+        ),
+        pagingSourceFactory = { ProductsPagingSource(productsRemoteDataSource, query) }
+    ).flow
+
     override suspend fun getSingleProduct(id: Int): Product = productsRemoteDataSource.getSingleProduct(id)
 }
