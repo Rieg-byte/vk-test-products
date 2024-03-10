@@ -5,7 +5,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.vktestproducts.data.models.Product
 
-class ProductsPagingSource (private val productsRemoteDataSource: ProductsRemoteDataSource): PagingSource<Int, Product>() {
+class ProductsPagingSource (
+    private val productsRemoteDataSource: ProductsRemoteDataSource,
+    private val query: String? = null
+): PagingSource<Int, Product>() {
     override fun getRefreshKey(state: PagingState<Int, Product>): Int? {
         val anchorPosition = state.anchorPosition ?: return null
         val skip = state.closestPageToPosition(anchorPosition) ?: return null
@@ -16,7 +19,9 @@ class ProductsPagingSource (private val productsRemoteDataSource: ProductsRemote
         return try {
             val skip = params.key ?: 0
             val limit = params.loadSize
-            val response = productsRemoteDataSource.getProducts(skip, limit)
+            val response =
+                if (query==null) productsRemoteDataSource.getProducts(skip, limit)
+                else productsRemoteDataSource.getProductsByQuery(skip, limit, query)
             val products = response.products
             val nextKey = if (products.size < limit) null else skip + products.size
             val prevKey = if (skip == 0) null else skip - products.size
