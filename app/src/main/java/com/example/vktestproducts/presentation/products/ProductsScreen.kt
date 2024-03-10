@@ -2,6 +2,7 @@ package com.example.vktestproducts.presentation.products
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -53,8 +54,11 @@ fun ProductsScreen(
                     modifier = Modifier.fillMaxSize(),
                     products = lazyPagingProducts,
                     navigateToDetailsScreen = navigateToDetailsScreen,
-                    loadingPlaceholder = { LoadingPlaceholder() },
-                    errorPlaceholder = { ErrorPlaceholder(onRefresh = {lazyPagingProducts.retry()}) },
+                    loadingPlaceholder = { LoadingPlaceholder(modifier = Modifier.fillMaxWidth()) },
+                    errorPlaceholder = { ErrorPlaceholder(
+                        onRefresh = {lazyPagingProducts.retry()},
+                        modifier = Modifier.fillMaxWidth()
+                    ) },
                     notFoundPlaceholder = {
                         NotFoundPlaceholder(text = stringResource(id = R.string.not_found))
                     }
