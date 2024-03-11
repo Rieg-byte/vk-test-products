@@ -13,15 +13,9 @@
 
 ## Скриншоты 
 
-![1](/screenshots/1.jpg)
-
-![2](/screenshots/2.jpg)
-
-![3](/screenshots/3.jpg)
-
-![4](/screenshots/4.jpg)
-
-![5](/screenshots/5.jpg)
-
-![6](/screenshots/6.jpg)
-
+<img src="/screenshots/1.jpg" width="192" height="427"/>
+<img src="/screenshots/2.jpg" width="192" height="427"/>
+<img src="/screenshots/3.jpg" width="192" height="427"/>
+<img src="/screenshots/4.jpg" width="192" height="427"/>
+<img src="/screenshots/5.jpg" width="192" height="427"/>
+<img src="/screenshots/6.jpg" width="192" height="427"/>
