@@ -1,5 +1,6 @@
 package com.example.vktestproducts.presentation.search
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -24,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -34,6 +37,7 @@ import com.example.vktestproducts.presentation.common.components.LoadingPlacehol
 import com.example.vktestproducts.presentation.common.components.NotFoundPlaceholder
 import com.example.vktestproducts.presentation.common.components.ProductsListPlaceholder
 import com.example.vktestproducts.presentation.common.icons.VkTestProductsIcons
+import com.example.vktestproducts.ui.theme.VkTestProductsTheme
 
 @Composable
 fun SearchScreen(
@@ -104,9 +108,11 @@ private fun SearchBody(
 }
 
 @Composable
-private fun SearchDefault() {
+private fun SearchDefault(
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Text(text = stringResource(id = R.string.enter_text))
@@ -143,6 +149,7 @@ private fun SearchTopBar(
 
 @Composable
 private fun SearchField(
+    modifier: Modifier = Modifier,
     searchValue: String,
     onSearchValueChange: (String) -> Unit = {},
     onSearchTrigger: (String) -> Unit = {}
@@ -180,9 +187,20 @@ private fun SearchField(
                 onSearchTrigger(searchValue)
             }
         ),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     )
+}
+
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
+@Composable
+private fun SearchTopBarPreview() {
+    VkTestProductsTheme {
+        Surface {
+            SearchTopBar(searchValue = "vk")
+        }
+    }
 }
 
