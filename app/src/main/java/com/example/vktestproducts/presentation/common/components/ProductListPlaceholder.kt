@@ -1,5 +1,6 @@
 package com.example.vktestproducts.presentation.common.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -39,6 +41,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.vktestproducts.R
 import com.example.vktestproducts.data.models.Product
+import com.example.vktestproducts.ui.theme.VkTestProductsTheme
 import kotlinx.coroutines.flow.flowOf
 
 @Composable
@@ -141,7 +144,8 @@ private fun ProductCard(
 }
 
 
-@Preview(device = "id:pixel_5", showBackground = true, showSystemUi = true)
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun ProductsListPlaceholderPreview() {
     val products = listOf(
@@ -173,33 +177,42 @@ private fun ProductsListPlaceholderPreview() {
         )
     )
     val lazyPagingProducts = flowOf(PagingData.from(products)).collectAsLazyPagingItems()
-    ProductsListPlaceholder(
-        modifier = Modifier.fillMaxSize(),
-        products = lazyPagingProducts,
-        navigateToDetailsScreen = {},
-        loadingPlaceholder = { LoadingPlaceholder() },
-        errorPlaceholder = { ErrorPlaceholder(onRefresh = {lazyPagingProducts.retry()}) },
-        notFoundPlaceholder = { NotFoundPlaceholder(text = stringResource(id = R.string.not_found))}
-    )
+    VkTestProductsTheme {
+        Surface {
+            ProductsListPlaceholder(
+                modifier = Modifier.fillMaxSize(),
+                products = lazyPagingProducts,
+                navigateToDetailsScreen = {},
+                loadingPlaceholder = { LoadingPlaceholder() },
+                errorPlaceholder = { ErrorPlaceholder(onRefresh = {lazyPagingProducts.retry()}) },
+                notFoundPlaceholder = { NotFoundPlaceholder(text = stringResource(id = R.string.not_found))}
+            )
+        }
+    }
 }
 
-@Preview(device = "id:pixel_5")
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun ProductCardPreview() {
-    ProductCard(
-        product = Product(
-            id = 1,
-            title = "Realme 8i",
-            description = "Процессор Helio G96 Частота обновления экрана 120 Гц Аккумулятор 5000 мАч Дополнительные 5 ГБ виртуальной памяти Тройная Ai-камера 50 Мп...",
-            price = 199,
-            discountPercentage = 0.0,
-            rating = 4.52,
-            stock = 10,
-            brand = "Realme",
-            category = "smartphones",
-            thumbnail = "",
-            images = listOf("")
-        ),
-        navigateToDetailsScreen = {}
-    )
+    VkTestProductsTheme {
+        Surface {
+            ProductCard(
+                product = Product(
+                    id = 1,
+                    title = "Realme 8i",
+                    description = "Процессор Helio G96 Частота обновления экрана 120 Гц Аккумулятор 5000 мАч Дополнительные 5 ГБ виртуальной памяти Тройная Ai-камера 50 Мп...",
+                    price = 199,
+                    discountPercentage = 0.0,
+                    rating = 4.52,
+                    stock = 10,
+                    brand = "Realme",
+                    category = "smartphones",
+                    thumbnail = "",
+                    images = listOf("")
+                ),
+                navigateToDetailsScreen = {}
+            )
+        }
+    }
 }
