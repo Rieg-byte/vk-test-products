@@ -1,5 +1,6 @@
 package com.example.vktestproducts.presentation.products
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -16,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.vktestproducts.R
@@ -24,6 +27,8 @@ import com.example.vktestproducts.presentation.common.components.LazyPagingProdu
 import com.example.vktestproducts.presentation.common.components.LoadingPlaceholder
 import com.example.vktestproducts.presentation.common.components.NotFoundPlaceholder
 import com.example.vktestproducts.presentation.common.components.ProductsListPlaceholder
+import com.example.vktestproducts.presentation.common.icons.VkTestProductsIcons
+import com.example.vktestproducts.ui.theme.VkTestProductsTheme
 
 @Composable
 fun ProductsScreen(
@@ -73,7 +78,7 @@ fun ProductsScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductsTopBar(
+private fun ProductsTopBar(
     modifier: Modifier = Modifier,
     title: String,
     navigationIcon: ImageVector,
@@ -91,3 +96,16 @@ fun ProductsTopBar(
     )
 }
 
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
+@Composable
+private fun ProductsTopBarPreview() {
+    VkTestProductsTheme {
+        Surface {
+            ProductsTopBar(
+                title = "Тест",
+                navigationIcon = VkTestProductsIcons.Search,
+                navigationContentDescription = null)
+        }
+    }
+}
