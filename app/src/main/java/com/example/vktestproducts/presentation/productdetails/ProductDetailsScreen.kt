@@ -1,5 +1,6 @@
 package com.example.vktestproducts.presentation.productdetails
 
+import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,6 +28,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -52,6 +54,7 @@ import com.example.vktestproducts.data.models.Product
 import com.example.vktestproducts.presentation.common.components.ErrorPlaceholder
 import com.example.vktestproducts.presentation.common.components.LoadingPlaceholder
 import com.example.vktestproducts.presentation.common.icons.VkTestProductsIcons
+import com.example.vktestproducts.ui.theme.VkTestProductsTheme
 import com.example.vktestproducts.ui.theme.colorRating
 import com.example.vktestproducts.ui.theme.discountBackground
 import com.example.vktestproducts.ui.theme.onDiscountBackground
@@ -306,46 +309,81 @@ private fun ProductDescriptionCard(
     }
 }
 
-@Preview(device = "id:pixel_5", showBackground = true)
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
+@Composable
+private fun DetailAppBarPreview() {
+    VkTestProductsTheme {
+        Surface {
+            DetailAppBar(navigateUp = { /*TODO*/ })
+        }
+    }
+}
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun ImageHorizontalPagerPreview() {
-    ImageHorizontalPager(images = listOf("", ""))
+    VkTestProductsTheme {
+        Surface {
+            ImageHorizontalPager(images = listOf("", ""))
+        }
+    }
 }
 
-@Preview(device = "id:pixel_5", showBackground = true)
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun TitleBrandCardPreview() {
-    TitleBrandCard(title = "iPhone 9", brand = "Apple")
+    VkTestProductsTheme {
+        Surface {
+            TitleBrandCard(title = "iPhone 9", brand = "Apple")
+        }
+    }
 }
 
-@Preview(device = "id:pixel_5", showBackground = true)
+
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun PriceCardPreview() {
-    PriceRatingCard(price = 2, discountPercentage = 0.0, rating = 2.44)
+    VkTestProductsTheme {
+        Surface {
+            PriceRatingCard(price = 2, discountPercentage = 0.0, rating = 2.44)
+        }
+    }
 }
 
-@Preview(device = "id:pixel_5", showBackground = true)
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun ProductDescriptionPreview() {
-    ProductDescriptionCard(description = "Какое-то описание")
+    VkTestProductsTheme {
+        Surface {
+            ProductDescriptionCard(description = "Какое-то описание")
+        }
+    }
 }
-
-@Preview(device = "id:pixel_5", showBackground = true)
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
 @Composable
 private fun ProductDetailPreview() {
-    ProductDetail(
-        product = Product(
-            id = 1,
-            title = "Realme 8i",
-            description = "Процессор Helio G96 Частота обновления экрана 120 Гц Аккумулятор 5000 мАч Дополнительные 5 ГБ виртуальной памяти Тройная Ai-камера 50 Мп...",
-            price = 199,
-            discountPercentage = 0.2,
-            rating = 4.52,
-            stock = 10,
-            brand = "Realme",
-            category = "smartphones",
-            thumbnail = "",
-            images = listOf("")
-        )
-    )
+    VkTestProductsTheme {
+        Surface {
+            ProductDetail(
+                product = Product(
+                    id = 1,
+                    title = "Realme 8i",
+                    description = "Процессор Helio G96 Частота обновления экрана 120 Гц Аккумулятор 5000 мАч Дополнительные 5 ГБ виртуальной памяти Тройная Ai-камера 50 Мп...",
+                    price = 199,
+                    discountPercentage = 0.2,
+                    rating = 4.52,
+                    stock = 10,
+                    brand = "Realme",
+                    category = "smartphones",
+                    thumbnail = "",
+                    images = listOf("")
+                )
+            )
+        }
+    }
 }
