@@ -220,6 +220,7 @@ private fun TitleBrandCard(
         }
     }
 }
+
 @Composable
 private fun PriceRatingCard(
     modifier: Modifier = Modifier,
@@ -319,6 +320,7 @@ private fun DetailAppBarPreview() {
         }
     }
 }
+
 @Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(name = "Light theme", showBackground = true)
 @Composable
@@ -363,6 +365,7 @@ private fun ProductDescriptionPreview() {
         }
     }
 }
+
 @Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(name = "Light theme", showBackground = true)
 @Composable
