@@ -41,7 +41,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -241,10 +240,7 @@ private fun PriceRatingCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = buildAnnotatedString {
-                        append(price.toString())
-                        append(stringResource(id = R.string.dollar))
-                    },
+                    text = stringResource(id = R.string.price, price),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -255,7 +251,7 @@ private fun PriceRatingCard(
                             .clip(RoundedCornerShape(8.dp))
                             .background(MaterialTheme.colorScheme.discountBackground)
                             .padding(4.dp),
-                        text = "-$discountPercentage%",
+                        text = stringResource(id = R.string.discount_percentage, discountPercentage.toString()),
                         fontSize = 16.sp,
                         color = MaterialTheme.colorScheme.onDiscountBackground,
                         fontWeight = FontWeight.SemiBold,
