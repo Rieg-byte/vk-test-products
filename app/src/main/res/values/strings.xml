@@ -4,7 +4,8 @@
     <string name="refresh">Обновить</string>
     <string name="back_button">Кнопка назад</string>
     <string name="about_the_product">О товаре</string>
-    <string name="dollar">$</string>
+    <string name="price">%d $</string>
+    <string name="discount_percentage">-%s%%</string>
     <string name="search">Поиск</string>
     <string name="enter_text">Введите название товара</string>
     <string name="back">Назад</string>
