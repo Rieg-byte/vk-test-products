@@ -15,4 +15,5 @@
     <string name="category_unselected">Выбрать категорию</string>
     <string name="category_selected">Категория: %s</string>
     <string name="select">Выбрать</string>
+    <string name="cancel">Отменить выбор</string>
 </resources>
