@@ -90,7 +90,7 @@ private fun DetailAppBar(
             IconButton(onClick = navigateUp) {
                 Icon(
                     imageVector = VkTestProductsIcons.ArrowBack,
-                    contentDescription = stringResource(id = R.string.back_button)
+                    contentDescription = stringResource(id = R.string.back)
                 )
             }
         }
