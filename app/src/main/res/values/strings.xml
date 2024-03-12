@@ -11,4 +11,7 @@
     <string name="clear_input">Очистить ввод</string>
     <string name="products">Товары</string>
     <string name="not_found">Ничего не найдено</string>
+    <string name="category_unselected">Выбрать категорию</string>
+    <string name="category_selected">Категория: %s</string>
+    <string name="select">Выбрать</string>
 </resources>
