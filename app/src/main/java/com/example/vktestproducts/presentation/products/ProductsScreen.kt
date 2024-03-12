@@ -1,6 +1,7 @@
 package com.example.vktestproducts.presentation.products
 
 import android.content.res.Configuration
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +23,6 @@ import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -252,11 +252,18 @@ private fun CategoryItem(
 ) {
     Row(
         modifier = modifier
+            .clickable { onClick() }
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+        ,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RadioButton(selected = selected, onClick = onClick)
+        Icon(
+            modifier = Modifier.size(30.dp),
+            imageVector =
+            if (selected) VkTestProductsIcons.RadioButtonChecked
+            else VkTestProductsIcons.RadioButtonUnchecked,
+            contentDescription = null)
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = nameCategory)
     }
@@ -318,6 +325,16 @@ private fun FilterProductsChipPreview(){
     }
 }
 
+@Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "Light theme", showBackground = true)
+@Composable
+private fun CategoryItemPreview() {
+    VkTestProductsTheme {
+        Surface {
+            CategoryItem(selected = true, onClick = { /*TODO*/ }, nameCategory = "Тест")
+        }
+    }
+}
 @Preview(name = "Dark theme", showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(name = "Light theme", showBackground = true)
 @Composable
