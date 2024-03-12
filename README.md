@@ -6,7 +6,7 @@
 * Что было использовано:
   * Kotlin 
   * Kotlin Coroutines. Для асинхронного выполнения кода
-  * Jetpack Compose. Вертска
+  * Jetpack Compose. UI
   * Jetpack Navigation. Для навигации между экранами 
   * Retrofit2. Для работы с сетью 
   * Kotlin Serialization. Для преобразования данных из Json формата в Data-класс
