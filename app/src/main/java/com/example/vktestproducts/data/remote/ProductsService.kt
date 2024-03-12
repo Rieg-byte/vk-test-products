@@ -24,4 +24,14 @@ interface ProductsService {
     suspend fun getSingleProduct(
         @Path("id") id: Int
     ): Product
+
+    @GET("products/categories")
+    suspend fun getCategories(): List<String>
+
+    @GET("/products/category/{nameCategory}")
+    suspend fun getProductsByCategory(
+        @Path("nameCategory") nameCategory: String,
+        @Query("skip") skip: Int,
+        @Query("limit") limit: Int,
+    ): ResponseProducts
 }
