@@ -23,7 +23,7 @@ class ProductsByCategoryPagingSource (
             val products = response.products
             val nextKey = if (products.size < limit) null else skip + products.size
             val prevKey = if (skip == 0) null else skip - products.size
-            Log.d("PagingCheck", "skip = $skip, limit = $limit, size = ${products.size}, prevKey = $prevKey, nextKey = $nextKey")
+            // Log.d("PagingCheck", "skip = $skip, limit = $limit, size = ${products.size}, prevKey = $prevKey, nextKey = $nextKey")
             LoadResult.Page(
                 data = products,
                 prevKey = prevKey,
