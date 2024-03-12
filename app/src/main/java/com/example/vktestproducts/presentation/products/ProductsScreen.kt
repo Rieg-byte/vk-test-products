@@ -31,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -233,8 +232,8 @@ private fun FilterProductsChip(
                     onClick = onDeselect
                 ) {
                     Icon(
-                        imageVector = VkTestProductsIcons.Close,
-                        contentDescription = null,
+                        imageVector = VkTestProductsIcons.Cancel,
+                        contentDescription = stringResource(id = R.string.cancel),
                     )
                 }
             }
